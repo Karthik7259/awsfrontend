@@ -36,7 +36,7 @@ export default function SuperAdminFeedbackPage() {
       return
     }
 
-    fetch(apiUrl('/api/admin/feedback'), {
+    fetch(apiUrl('/admin/feedback'), {
       headers: {
         Authorization: `Bearer ${token}`,
       },

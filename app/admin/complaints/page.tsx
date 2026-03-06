@@ -181,12 +181,12 @@ export default function ComplaintsPage() {
     }
 
     Promise.all([
-      fetch(apiUrl('/api/admin/complaints/me'), {
+      fetch(apiUrl('/admin/complaints/me'), {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }),
-      fetch(apiUrl('/api/complaints/departments')),
+      fetch(apiUrl('/complaints/departments')),
     ])
       .then(async ([complaintsResponse, departmentsResponse]) => {
         if (!complaintsResponse.ok) {
@@ -304,7 +304,7 @@ export default function ComplaintsPage() {
 
     setStatusUpdating(true)
     try {
-      const response = await fetch(apiUrl(`/api/admin/complaints/${selectedComplaint.ticketId}/status`), {
+      const response = await fetch(apiUrl(`/admin/complaints/${selectedComplaint.ticketId}/status`), {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${token}`,

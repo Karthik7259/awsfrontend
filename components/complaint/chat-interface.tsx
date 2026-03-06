@@ -330,7 +330,7 @@ export function ChatInterface() {
             }
 
             try {
-                const res = await fetch(apiUrl("/api/complaints/start"), {
+                const res = await fetch(apiUrl("/complaints/start"), {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                 });
@@ -417,7 +417,7 @@ export function ChatInterface() {
         setError(null);
 
         try {
-            const res = await fetch(apiUrl("/api/complaints/message"), {
+            const res = await fetch(apiUrl("/complaints/message"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -500,7 +500,7 @@ export function ChatInterface() {
                     : undefined,
             };
 
-            const res = await fetch(apiUrl("/api/complaints/submit-session"), {
+            const res = await fetch(apiUrl("/complaints/submit-session"), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(reqBody),
@@ -603,7 +603,7 @@ export function ChatInterface() {
                 formData.append("file", selectedImage);
 
                 const res = await fetch(
-                    apiUrl(`/api/complaints/${ticketId}/upload-image`),
+                    apiUrl(`/complaints/${ticketId}/upload-image`),
                     {
                         method: "POST",
                         body: formData,
@@ -725,7 +725,7 @@ export function ChatInterface() {
         setIsStarting(true);
         (async () => {
             try {
-                const res = await fetch(apiUrl("/api/complaints/start"), {
+                const res = await fetch(apiUrl("/complaints/start"), {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                 });

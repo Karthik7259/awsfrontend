@@ -44,7 +44,7 @@ export default function AdminDashboardPage() {
       return
     }
 
-    fetch(apiUrl('/api/admin/complaints/me'), {
+    fetch(apiUrl('/admin/complaints/me'), {
       headers: {
         Authorization: `Bearer ${token}`,
       },

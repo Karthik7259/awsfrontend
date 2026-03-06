@@ -69,7 +69,7 @@ export function SuperDashboard() {
         return;
       }
 
-      const response = await fetch(apiUrl("/api/admin/department-admins"), {
+      const response = await fetch(apiUrl("/admin/department-admins"), {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -107,7 +107,7 @@ export function SuperDashboard() {
         throw new Error("Admin token not found. Please login again.");
       }
 
-      const response = await fetch(apiUrl(`/api/admin/department-admins/${adminId}/approve`), {
+      const response = await fetch(apiUrl(`/admin/department-admins/${adminId}/approve`), {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -150,7 +150,7 @@ export function SuperDashboard() {
         throw new Error("Admin token not found. Please login again.");
       }
 
-      const response = await fetch(apiUrl(`/api/admin/department-admins/${adminId}`), {
+      const response = await fetch(apiUrl(`/admin/department-admins/${adminId}`), {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

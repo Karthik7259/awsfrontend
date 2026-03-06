@@ -1,8 +1,9 @@
-const BASE_URL = "http://34.227.190.214:8000";
+const RAW_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL?.trim();
+const BASE_URL = (RAW_BASE_URL && RAW_BASE_URL.length > 0 ? RAW_BASE_URL : "/api").replace(/\/$/, "");
 
 /**
  * Build a full API URL from a path.
- * @example apiUrl("/api/complaints/start") → "http://34.227.190.214:8000/api/complaints/start"
+ * @example apiUrl("/complaints/start") -> "/api/complaints/start"
  */
 export function apiUrl(path: string): string {
   return `${BASE_URL}${path}`;
@@ -60,7 +61,7 @@ async function parseResponse<T>(response: Response): Promise<T> {
 }
 
 export async function fetchDepartments(): Promise<DepartmentItem[]> {
-  const response = await fetch(apiUrl("/api/complaints/departments"), {
+  const response = await fetch(apiUrl("/complaints/departments"), {
     method: "GET",
   });
   const data = await parseResponse<{ success: boolean; data: DepartmentItem[] }>(response);
@@ -73,7 +74,7 @@ export async function adminSignup(payload: {
   department: string;
   password: string;
 }): Promise<AdminSignupResponse> {
-  const response = await fetch(apiUrl("/api/admin/auth/signup"), {
+  const response = await fetch(apiUrl("/admin/auth/signup"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -87,7 +88,7 @@ export async function adminLogin(payload: {
   email: string;
   password: string;
 }): Promise<AdminAuthResponse> {
-  const response = await fetch(apiUrl("/api/admin/auth/login"), {
+  const response = await fetch(apiUrl("/admin/auth/login"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -101,7 +102,7 @@ export async function superAdminLogin(payload: {
   email: string;
   password: string;
 }): Promise<AdminAuthResponse> {
-  const response = await fetch(apiUrl("/api/admin/auth/super-login"), {
+  const response = await fetch(apiUrl("/admin/auth/super-login"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -115,7 +116,7 @@ export async function verifyAdminEmailOtp(payload: {
   email: string;
   otp: string;
 }): Promise<AdminOtpStatusResponse> {
-  const response = await fetch(apiUrl("/api/admin/auth/verify/email"), {
+  const response = await fetch(apiUrl("/admin/auth/verify/email"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -128,7 +129,7 @@ export async function verifyAdminEmailOtp(payload: {
 export async function resendAdminOtps(payload: {
   email: string;
 }): Promise<AdminOtpStatusResponse> {
-  const response = await fetch(apiUrl("/api/admin/auth/otp/resend"), {
+  const response = await fetch(apiUrl("/admin/auth/otp/resend"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

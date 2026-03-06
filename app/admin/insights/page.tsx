@@ -96,12 +96,12 @@ export default function InsightsPage() {
     }
 
     Promise.all([
-      fetch(apiUrl('/api/admin/complaints/me'), {
+      fetch(apiUrl('/admin/complaints/me'), {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }),
-      fetch(apiUrl('/api/complaints/departments')),
+      fetch(apiUrl('/complaints/departments')),
     ])
       .then(async ([complaintsResponse, departmentsResponse]) => {
         if (!complaintsResponse.ok) {

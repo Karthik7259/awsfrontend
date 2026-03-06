@@ -96,10 +96,10 @@ export default function DepartmentsPage() {
     }
 
     Promise.all([
-      fetch(apiUrl('/api/admin/complaints/all'), {
+      fetch(apiUrl('/admin/complaints/all'), {
         headers: { Authorization: `Bearer ${token}` },
       }),
-      fetch(apiUrl('/api/complaints/departments')),
+      fetch(apiUrl('/complaints/departments')),
     ])
       .then(async ([complaintsResponse, departmentsResponse]) => {
         if (!complaintsResponse.ok) {
@@ -197,7 +197,7 @@ export default function DepartmentsPage() {
 
     setReopeningTicket(ticketId)
     try {
-      const response = await fetch(apiUrl(`/api/admin/complaints/${ticketId}/reopen`), {
+      const response = await fetch(apiUrl(`/admin/complaints/${ticketId}/reopen`), {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${token}`,

@@ -88,7 +88,7 @@
 //     setError('')
 //     setTrackingData(null)
 
-//     fetch(apiUrl(`/api/complaints/${ticketId}`))
+//     fetch(apiUrl(`/complaints/${ticketId}`))
 //       .then(async (res) => {
 //         if (!res.ok) {
 //           if (res.status === 404) throw new Error('No complaint found. Please check the ticket ID.')
@@ -125,7 +125,7 @@
 //     setTrackingData(null)
 
 //     try {
-//       const res = await fetch(apiUrl(`/api/complaints/${searchInput.trim()}`))
+//       const res = await fetch(apiUrl(`/complaints/${searchInput.trim()}`))
 //       if (!res.ok) {
 //         if (res.status === 404) {
 //           throw new Error('No complaint found. Please check the ticket ID.')
@@ -168,7 +168,7 @@
 //     setFeedbackError('')
 
 //     try {
-//       const res = await fetch(apiUrl(`/api/complaints/${trackingData.ticketId}/feedback`), {
+//       const res = await fetch(apiUrl(`/complaints/${trackingData.ticketId}/feedback`), {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify({
@@ -201,7 +201,7 @@
 //     setTrackingData(null)
 //     setShowMyComplaints(false)
 
-//     fetch(apiUrl(`/api/complaints/${ticketId}`))
+//     fetch(apiUrl(`/complaints/${ticketId}`))
 //       .then(async (res) => {
 //         if (!res.ok) {
 //           if (res.status === 404) throw new Error('No complaint found. Please check the ticket ID.')
@@ -592,7 +592,7 @@ export function ComplaintTracker() {
 
   // Shared fetch helper — always bypasses cache 
   const fetchComplaint = useCallback(async (ticketId: string): Promise<TrackingData> => {
-    const res = await fetch(apiUrl(`/api/complaints/${ticketId}`), {
+    const res = await fetch(apiUrl(`/complaints/${ticketId}`), {
       cache: 'no-store',
     })
     if (!res.ok) {
@@ -688,7 +688,7 @@ export function ComplaintTracker() {
     setFeedbackError('')
 
     try {
-      const res = await fetch(apiUrl(`/api/complaints/${trackingData.ticketId}/feedback`), {
+      const res = await fetch(apiUrl(`/complaints/${trackingData.ticketId}/feedback`), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
