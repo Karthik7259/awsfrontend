@@ -1,17 +1,8 @@
-const API_URLS: Record<string, string> = {
-  development: "http://34.227.190.214:8000",
-  production: "https://api.grievance-mitra.in", // TODO: replace with actual production URL
-};
-
-const mode = process.env.NEXT_PUBLIC_API_MODE || "development";
-const BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ||
-  API_URLS[mode] ||
-  API_URLS.development;
+const BASE_URL = "http://34.227.190.214:8000";
 
 /**
  * Build a full API URL from a path.
- * @example apiUrl("/api/complaints/start") → "http://localhost:8000/api/complaints/start"
+ * @example apiUrl("/api/complaints/start") → "http://34.227.190.214:8000/api/complaints/start"
  */
 export function apiUrl(path: string): string {
   return `${BASE_URL}${path}`;
