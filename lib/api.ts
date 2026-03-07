@@ -1,11 +1,12 @@
-const BASE_URL = "/api";
+const BASE_URL = "https://d2rfea13h6dby4.cloudfront.net";
 
 /**
  * Build a full API URL from a path.
- * @example apiUrl("/complaints/start") -> "/api/complaints/start"
+ * @example apiUrl("/complaints/start") -> "https://d2rfea13h6dby4.cloudfront.net/api/complaints/start"
  */
 export function apiUrl(path: string): string {
-  return `${BASE_URL}${path}`;
+  const normalizedPath = path.startsWith('/api/') ? path : `/api${path}`
+  return `${BASE_URL}${normalizedPath}`;
 }
 
 export type DepartmentItem = {

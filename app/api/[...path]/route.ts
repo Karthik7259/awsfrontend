@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const NGROK_BASE_URL = 'https://unidolized-lynette-tinnily.ngrok-free.dev'
+const BACKEND_BASE_URL = 'https://d2rfea13h6dby4.cloudfront.net'
 
 type RouteContext = {
   params:
@@ -15,7 +15,7 @@ type RouteContext = {
 function buildTargetUrl(pathSegments: string[], search: string): string {
   const rawPath = pathSegments.join('/')
   const upstreamPath = rawPath.startsWith('api/') ? rawPath : `api/${rawPath}`
-  return `${NGROK_BASE_URL}/${upstreamPath}${search}`
+  return `${BACKEND_BASE_URL}/${upstreamPath}${search}`
 }
 
 async function forwardRequest(request: NextRequest, context: RouteContext): Promise<NextResponse> {
@@ -24,8 +24,6 @@ async function forwardRequest(request: NextRequest, context: RouteContext): Prom
 
   const headers = new Headers(request.headers)
   headers.delete('host')
-  headers.set('ngrok-skip-browser-warning', '1')
-  headers.set('user-agent', 'grievance-mitra-next-proxy')
 
   const init: RequestInit = {
     method: request.method,
