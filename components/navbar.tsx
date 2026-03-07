@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/citizen-file', label: 'File Complaint' },
   { href: '/track', label: 'Track Complaint' },
-  { href: '/citizen-login', label: 'Login' },
+
 ]
 
 export function Navbar() {
