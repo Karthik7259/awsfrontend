@@ -1,8 +1,8 @@
-const BASE_URL = "http://34.227.190.214:8000";
+const BASE_URL = "/api";
 
 /**
  * Build a full API URL from a path.
- * @example apiUrl("/complaints/start") -> "http://34.227.190.214:8000/complaints/start"
+ * @example apiUrl("/complaints/start") -> "/api/complaints/start"
  */
 export function apiUrl(path: string): string {
   return `${BASE_URL}${path}`;

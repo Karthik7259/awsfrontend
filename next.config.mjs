@@ -34,15 +34,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: "http://34.227.190.214:8000/:path*",
-      },
-    ]
-  },
 }
 
 export default nextConfig
