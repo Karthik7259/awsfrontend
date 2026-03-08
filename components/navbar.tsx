@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: '/citizen-file', label: 'File Complaint' },
   { href: '/track', label: 'Track Complaint' },
   { href: '/admin-login', label: 'Admin Login' },
+  { href: '/super-admin-login', label: 'Super Admin Login' },
 ]
 
 export function Navbar() {
